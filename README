@@ -1,0 +1,32 @@
+# Frontend HTML - CI/CD + Vercel
+
+## 1. Công nghệ sử dụng
+- HTML / CSS / JavaScript
+- Vercel (Frontend Cloud)
+- GitHub Actions (CI/CD)
+
+## 2. Quy trình CI/CD
+1. Code → push lên nhánh `main`
+2. GitHub Actions chạy file `.github/workflows/deploy-frontend.yml`
+3. Workflow sẽ gọi API Deploy Hook của Vercel
+4. Vercel tự build + deploy → xuất bản website
+
+## 3. Cách kết nối GitHub với Vercel
+1. Vào https://vercel.com
+2. Tạo Project mới → Import từ GitHub
+3. Chọn repo `frontend-html`
+4. Deploy lần đầu
+5. Vào **Settings → Git → Deploy Hooks**
+6. Tạo Deploy Hook → copy URL
+
+## 4. Thêm Deploy Hook vào GitHub Secrets
+Repo → Settings → Secrets → Actions → New Secret:
+
+- Name: `VERCEL_DEPLOY_HOOK`
+- Value: (dán URL Deploy Hook)
+
+## 5. Test CI/CD
+- Sửa file index.html
+- Commit & push lên `main`
+- Vào tab Actions xem workflow chạy
+- Vercel sẽ tự deploy website mới
